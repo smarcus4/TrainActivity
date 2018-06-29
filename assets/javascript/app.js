@@ -1,5 +1,4 @@
-$(document).ready(function () {
-  var config = {
+ var config = {
       apiKey: "AIzaSyBA3CuckV5_T_x9OGbRlKONilv3wfeQYA4",
       authDomain: "train-activity-a6a19.firebaseapp.com",
       databaseURL: "https://train-activity-a6a19.firebaseio.com",
@@ -10,23 +9,21 @@ $(document).ready(function () {
     firebase.initializeApp(config);
 
 
-    var database = firebase.databse();
+   database = firebase.database();
 
-    $("#addTrain").on("click", function(event) {
-      event.preventDefault();
+   $("#addTrain").on("click", function (event) {
+    event.preventDefault();
 
-      var trainName = $("#trainName").val().trim();
-      var destination = $("#destination").val().trim();
-      var firstTrain = $("#firstTrain").val().trim();
-      var freq = $("$interval").val().trim();
+    var trainName = $("#trainName").val().trim();
+    var destination = $("#destination").val().trim();
+    var firstTrain = $("#firstTrain").val().trim();
+    var freq = $("#interval").val().trim();
 
-    
-    databse.ref().push({
+    database.ref().push({
       trainName: trainName,
       destination: destination,
       firstTrain: firstTrain,
       frequency: freq
-
     });
   });
 
@@ -46,14 +43,11 @@ $(document).ready(function () {
 
     var tRemainder = diffTime % newFreq;
 
-
     var tMinutesTillTrain = newFreq - tRemainder;
-
 
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     var catchTrain = moment(nextTrain).format("HH:mm");
 
-   
     $("#all-display").append(
       ' <tr><td>' + newTrain +
       ' </td><td>' + newLocation +
@@ -61,12 +55,9 @@ $(document).ready(function () {
       ' </td><td>' + catchTrain +
       ' </td><td>' + tMinutesTillTrain + ' </td></tr>');
 
-   
     $("#trainName, #destination, #firstTrain, #interval").val("");
     return false;
   },
-    
     function (errorObject) {
       console.log("Errors handled: " + errorObject.code);
     });
-});
