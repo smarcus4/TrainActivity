@@ -1,4 +1,4 @@
- var config = {
+  var config = {
       apiKey: "AIzaSyBA3CuckV5_T_x9OGbRlKONilv3wfeQYA4",
       authDomain: "train-activity-a6a19.firebaseapp.com",
       databaseURL: "https://train-activity-a6a19.firebaseio.com",
@@ -6,12 +6,12 @@
       storageBucket: "train-activity-a6a19.appspot.com",
       messagingSenderId: "635425682675"
     };
-    firebase.initializeApp(config);
+      firebase.initializeApp(config);
 
 
    database = firebase.database();
 
-   $("#addTrain").on("click", function (event) {
+  $("#addTrain").on("click", function (event) {
     event.preventDefault();
 
     var trainName = $("#trainName").val().trim();
